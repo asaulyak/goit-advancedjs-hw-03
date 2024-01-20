@@ -3,13 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link
+      href="https://unpkg.com/slim-select@latest/dist/slimselect.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/common.css" />
     <title>Homework 10</title>
   </head>
   <body>
-    <select class="breed-select"></select>
-    <p class="loader">Loading data, please wait...</p>
-    <p class="error">Oops! Something went wrong! Try reloading the page!</p>
-    <div class="cat-info"></div>
+    <main>
+      <div class="content">
+        <div class="select-wrapper hidden">
+          <select class="breed-select"></select>
+        </div>
+        <div class="loader hidden"></div>
+        <div class="cat-info"></div>
+      </div>
+    </main>
 
     <script src="index.js" type="module"></script>
   </body>
