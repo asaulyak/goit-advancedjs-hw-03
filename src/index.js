@@ -67,16 +67,14 @@ async function fillCatInfo(breedId) {
   showLoader();
   showInfo(false);
 
-  const { url, name, description, temperament } = await fetchCatByBreed(
-    breedId
-  ).catch(() => {
-    showError();
-    showLoader(false);
-  });
+  try {
+    const { url, name, description, temperament } = await fetchCatByBreed(
+      breedId
+    );
 
-  const element = getInfoElement();
+    const element = getInfoElement();
 
-  element.innerHTML = `
+    element.innerHTML = `
           <img
             width="400"
             src="${url}"
@@ -91,8 +89,12 @@ async function fillCatInfo(breedId) {
             <p>${temperament}</p>
           </div>`;
 
-  showLoader(false);
-  showInfo();
+    showInfo();
+  } catch (e) {
+    showError();
+  } finally {
+    showLoader(false);
+  }
 }
 
 function showElement(element, visible = true) {
@@ -118,7 +120,7 @@ function showError(
     message,
     color: 'red',
     position: 'topRight',
-    timeout: false
+    timeout: false,
   });
 }
 
